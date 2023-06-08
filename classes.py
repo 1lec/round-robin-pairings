@@ -1,11 +1,12 @@
 class Player:
-    """Represents a player in a chess tournament with 4 private data members: name, previous_opponents,
-    previous_colors, and rounds_paired."""
+    """Represents a player in a chess tournament with 5 private data members: name, previous_opponents,
+    previous_colors, white_count and rounds_paired."""
 
     def __init__(self, name):
         self._name = name
         self._previous_opponents = set()  # Using a set to eliminate potential for duplicates.
         self._previous_colors = []  # Colors are sorted from least to most recently played.
+        self._white_count = 0
         self._rounds_paired = 0
 
     def get_name(self):
@@ -23,6 +24,11 @@ class Player:
 
         return self._previous_colors
 
+    def get_white_count(self):
+        """Returns the number of whites the player has had."""
+
+        return self._white_count
+
     def get_rounds_paired(self):
         """Return the number of rounds a player has paired."""
 
@@ -34,9 +40,14 @@ class Player:
         self._previous_opponents.add(player_object)
 
     def add_color(self, color):
-        """Takes a string as an argument and appends it to the players list of previous colors."""
+        """Takes a string as an argument and inserts it at the front of the players list of previous colors."""
 
-        self._previous_colors.append(color)
+        self._previous_colors.insert(0, color)
+
+    def add_white(self):
+        """Increases the number of whites a player has had by 1."""
+
+        self._white_count + 1
 
 
 class Round:
