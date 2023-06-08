@@ -1,4 +1,4 @@
-from round_robin_classes import Round
+from classes import Round
 
 def generate_rounds(players_list):
     """Takes a list of players as an argument and returns a dictionary with round numbers as keys and round objects
