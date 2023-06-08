@@ -47,7 +47,7 @@ class Player:
     def add_white(self):
         """Increases the number of whites a player has had by 1."""
 
-        self._white_count + 1
+        self._white_count += 1
 
 
 class Round:
