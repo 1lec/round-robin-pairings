@@ -14,7 +14,3 @@ def generate_rounds(players_list):
         count += 1
 
     return round_dict
-
-# players_list = ['Caruana', 'Carlsen', 'Nakamura', 'Tari', 'So', 'Shankland', 'Kasparov', 'Karpov']
-
-# tournament_rounds = generate_rounds(players_list)
