@@ -8,4 +8,8 @@
 # as the value. An example dictionary is:
 # {1: Round(1), 2: Round(2), 3: Round(3)}
 
-# Step 4: Generate pairings for each round.
+# Step 4: Loop through the dictionary of rounds, and for each round, loop through the dictionary of players. For each
+# player if the number of rounds they've been paired is less than the current round that is being paired, find an
+# unpaired opponent for the player by again looping through the dictionary of players.
+
+# Step 5: Once an unpaired opponent is found for the player, determine the colors.
