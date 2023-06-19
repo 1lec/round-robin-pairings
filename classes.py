@@ -39,14 +39,16 @@ class Player:
 
         self._previous_opponents.add(player_object)
 
-    def add_color(self, color):
-        """Takes a string as an argument and inserts it at the front of the players list of previous colors."""
+    def add_black(self):
+        """Adds a black to the front of the previous_colors data member."""
 
-        self._previous_colors.insert(0, color)
+        self._previous_colors.insert(0, 'B')
 
     def add_white(self):
-        """Increases the number of whites a player has had by 1."""
+        """Increases the number of whites a player has had by 1, and adds a white to the front of the previous_colors
+        data member."""
 
+        self._previous_colors.insert(0, 'W')
         self._white_count += 1
 
 
