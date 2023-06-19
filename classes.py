@@ -5,7 +5,7 @@ class Player:
     def __init__(self, name):
         self._name = name
         self._previous_opponents = set()  # Using a set to eliminate potential for duplicates.
-        self._previous_colors = []  # Colors are sorted from least to most recently played.
+        self._previous_colors = []  # Most recent color is at the front of the list.
         self._white_count = 0
         self._rounds_paired = 0
 
