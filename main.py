@@ -1,4 +1,5 @@
 from classes import Player
+from classes import Round
 
 # Step 1: Read names of players from a file. Pass these names to Step 2 in the form of a list. An example list is:
 # [Carlsen, Caruana, Nakamura, So]
@@ -27,6 +28,14 @@ for names in player_object_dict:
 # Step 4: From the length of the list of Player objects, create a dictionary of rounds, with the round number as the
 # key and a Round object as the value. An example dictionary is:
 # {1: Round(1), 2: Round(2), 3: Round(3)}
+
+round_dictionary = {}
+
+count = 1
+
+while count < len(player_object_list):
+    round_dictionary[count] = Round(count)
+    count += 1
 
 # Step 5: Loop through the dictionary of rounds, and for each round, loop through the list of Player objects. For each
 # Player, if the number of rounds they've been paired is less than the current round that is being paired, find an
