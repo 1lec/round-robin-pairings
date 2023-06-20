@@ -29,17 +29,25 @@ for names in player_object_dict:
 # key and a Round object as the value. An example dictionary is:
 # {1: Round(1), 2: Round(2), 3: Round(3)}
 
-round_dictionary = {}
+round_dict = {}
 
 count = 1
 
 while count < len(player_object_list):
-    round_dictionary[count] = Round(count)
+    round_dict[count] = Round(count)
     count += 1
 
 # Step 5: Loop through the dictionary of rounds, and for each round, loop through the list of Player objects. For each
 # Player, if the number of rounds they've been paired is less than the current round that is being paired, find an
 # unpaired opponent for the player by again looping through the list of Player objects.
+
+for round_num in round_dict: # loop through the dictionary of rounds.
+
+    for player_1 in player_object_list: # for each round, loop through the list of Player objects
+        if player_1.get_rounds_paired() < round_num:
+
+            for player_2 in player_object_list:
+
 
 # Step 6: Once an unpaired opponent is found for the player, determine the colors by comparing the number of whites
 # played by both players. If they have played the same number of whites, compare their most recent colors played, loop
