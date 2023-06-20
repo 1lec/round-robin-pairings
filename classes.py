@@ -51,6 +51,11 @@ class Player:
         self._previous_colors.insert(0, 'W')
         self._white_count += 1
 
+    def subtract_white(self):
+        """Decreases the number of whites a player has had by 1. This method is necessary for removing invalid
+        pairings."""
+
+        self._white_count -= 1
 
 class Round:
     """Represents a round in a chess tournament with two private data members: round_number and pairings."""

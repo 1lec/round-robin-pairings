@@ -28,11 +28,15 @@
 # set of pairings contained within the current Round object. Add 1 to the rounds_played for both players, and update
 # each player's colors_played and white_count accordingly.
 
-# Step 8: If no unpaired opponent was found for a player, clear the pairings for the current round, which involves a
-# couple of steps: empty the set of pairings for the current Round object, remove the most recent color played for each
-# player who was paired, and reset the number of rounds paired to the number of the previous round. Once these are all
-# reset, shuffle the list of Player objects and reiterate through the Round. Continue this step until a valid set of
-# pairings is obtained. A set of pairings is valid once the length of set is equal to half the number of Player objects.
+# Step 8a: If no unpaired opponent was found for a player, the round must be repaired, which requires a few steps to
+# reset. First, for those players who were already paired (and thus need to be repaired), remove the last player in
+# their list of previous opponents, remove their most recently played color (and if that color was white, subtract 1
+# from their white_count), and reset their number of rounds paired to the previous round. Finally, empty the set of
+# pairings for the current Round object.
+
+# Step 8b: Once the invalid pairings from Step 2 are reset, shuffle the list of Player objects and reiterate through
+# the Round. Continue this step until a valid set of pairings is obtained, returning to Step 8a as needed. A set of
+# pairings is valid once the length of set is equal to half the number of Player objects.
 
 # Step 9: Once a valid set of pairings is obtained for every Round object, write the round number and corresponding
 # pairings into a new file.
