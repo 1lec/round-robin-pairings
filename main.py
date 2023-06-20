@@ -1,14 +1,28 @@
+from classes import Player
+
 # Step 1: Read names of players from a file. Pass these names to Step 2 in the form of a list. An example list is:
 # [Carlsen, Caruana, Nakamura, So]
+
+players_list = ['Carlsen', 'Caruana', 'Nakamura', 'So', 'Sevian', 'Shakland', 'Anand', 'Shirov']
 
 # Step 2: From the list of players, create a dictionary of objects, with the player's name as the key and a Player
 # object as the value. This step is necessary because I am not sure how to generate a list of Player objects from a
 # list of strings. An example dictionary is:
 # {'Carlsen': Player('Carlsen'), 'Caruana': Player('Caruana'), 'Nakamura': Player('Nakamura'), 'So': Player('So')}
 
+player_object_dict = {}
+
+for names in players_list:
+    player_object_dict[names] = Player(names)
+
 # Step 3: Loop through the dictionary of Player objects to create a list of Player objects. This will be necessary to
 # reorder the Player objects at a later step. An example list is:
 # [Player('Carlsen'), Player('Caruana'), Player('Nakamura'), Player('So')]
+
+player_object_list = []
+
+for names in player_object_dict:
+    player_object_list.append(player_object_dict[names])
 
 # Step 4: From the length of the list of Player objects, create a dictionary of rounds, with the round number as the
 # key and a Round object as the value. An example dictionary is:
