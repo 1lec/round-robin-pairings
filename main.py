@@ -41,12 +41,13 @@ while count < len(player_object_list):
 # Player, if the number of rounds they've been paired is less than the current round that is being paired, find an
 # unpaired opponent for the player by again looping through the list of Player objects.
 
-for round_num in round_dict: # loop through the dictionary of rounds.
+for round_num in round_dict: # loop through each round in the dictionary of rounds
 
-    for player_1 in player_object_list: # for each round, loop through the list of Player objects
-        if player_1.get_rounds_paired() < round_num:
-
+    for player_1 in player_object_list: # for each round, find an unpaired player in the list of Player objects
+        while player_1.get_rounds_paired() < round_num:
             for player_2 in player_object_list:
+                if (player_2.get_rounds_paired() < round_num) and (player_1 != player_2) and (player_2 not in player_1.get_previous_opponents()):
+
 
 
 # Step 6: Once an unpaired opponent is found for the player, determine the colors by comparing the number of whites

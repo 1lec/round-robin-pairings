@@ -57,6 +57,27 @@ class Player:
 
         self._white_count -= 1
 
+    def determine_colors(self, player_object):
+        """Takes a player object as an argument and determine due colors between that object and the object the method
+        is being called upon."""
+
+        if self._white_count > player_object.get_white_count():
+            self.add_black()
+            player_object.add_white()
+
+        elif self._white_count < player_object.get_white_count():
+            self.add_white()
+            player_object.add_black()
+
+        else:
+            same_color = True
+
+            for i, color in enumerate(self._previous_colors):
+                if color != player_object.get_previous_colors()[i]:
+                    same_color = False
+
+            if
+
 class Round:
     """Represents a round in a chess tournament with two private data members: round_number and pairings."""
 
