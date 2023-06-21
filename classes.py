@@ -1,4 +1,4 @@
-from main import round_num
+from main import round_num, player_object_list
 
 
 class Player:
@@ -137,3 +137,8 @@ class Round:
         else:
             new_pairing = (player_2.get_name(), player_1.get_name())
             self.add_pairing(new_pairing)
+
+    def is_incomplete(self):
+        """Returns True if the set of pairings for a Round object is incomplete."""
+
+        return len(self.get_pairings()) < (len(player_object_list) // 2)

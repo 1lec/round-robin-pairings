@@ -42,13 +42,15 @@ while count < len(player_object_list):
 # unpaired opponent for the player by again looping through the list of Player objects.
 
 for round_num in round_dict:  # loop through each round in the dictionary of rounds
-
-    for player_1 in player_object_list:  # for each round, find an unpaired player in the list of Player objects
-        while player_1.get_rounds_paired() < round_num:
-            for player_2 in player_object_list:
-                if player_1.is_valid_opponent(player_2):
-                    player_1.determine_colors(player_2)
-                    round_dict[round_num].generate_pairing(player_1, player_2)
+    while round_dict[round_num].is_incomplete():
+        for player_1 in player_object_list:  # for each round, find an unpaired player in the list of Player objects
+            paired = False
+            player_count = 0
+            while (player_1.get_rounds_paired() < round_num) and (player_count < len(player_object_list)):
+                for player_2 in player_object_list:
+                    if player_1.is_valid_opponent(player_2):
+                        player_1.determine_colors(player_2)
+                        round_dict[round_num].generate_pairing(player_1, player_2)
 
 # Step 6: Once an unpaired opponent is found for the player, determine the colors by comparing the number of whites
 # played by both players. If they have played the same number of whites, compare their most recent colors played, loop
@@ -66,7 +68,7 @@ for round_num in round_dict:  # loop through each round in the dictionary of rou
 # from their white_count), and reset their number of rounds paired to the previous round. Finally, empty the set of
 # pairings for the current Round object.
 
-# Step 8b: Once the invalid pairings from Step 2 are reset, shuffle the list of Player objects and reiterate through
+# Step 8b: Once the invalid pairings from Step 7 are reset, shuffle the list of Player objects and reiterate through
 # the Round. Continue this step until a valid set of pairings is obtained, returning to Step 8a as needed. A set of
 # pairings is valid once the length of set is equal to half the number of Player objects.
 
