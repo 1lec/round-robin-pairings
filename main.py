@@ -4,7 +4,7 @@ from classes import Round
 # Step 1: Read names of players from a file. Pass these names to Step 2 in the form of a list. An example list is:
 # [Carlsen, Caruana, Nakamura, So]
 
-players_list = ['Carlsen', 'Caruana', 'Nakamura', 'So', 'Sevian', 'Shakland', 'Anand', 'Shirov']
+players_list = ['Carlsen', 'Caruana', 'Nakamura', 'So', 'Sevian', 'Shankland', 'Anand', 'Shirov']
 
 # Step 2: From the list of players, create a dictionary of objects, with the player's name as the key and a Player
 # object as the value. This step is necessary because I am not sure how to generate a list of Player objects from a
@@ -48,7 +48,7 @@ for round_num in round_dict:  # loop through each round in the dictionary of rou
             for player_2 in player_object_list:
                 if player_1.is_valid_opponent(player_2):
                     player_1.determine_colors(player_2)
-
+                    round_dict[round_num].generate_pairing(player_1, player_2)
 
 # Step 6: Once an unpaired opponent is found for the player, determine the colors by comparing the number of whites
 # played by both players. If they have played the same number of whites, compare their most recent colors played, loop

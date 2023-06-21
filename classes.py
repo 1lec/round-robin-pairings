@@ -126,3 +126,14 @@ class Round:
         """Takes a pairing as an argument and adds it to the set of pairings for the round."""
 
         self._pairings.add(pairing)
+
+    def generate_pairing(self, player_1, player_2):
+        """Takes two Player objects as arguments and adds their pairing to the set of pairings for the round."""
+
+        if player_1.get_previous_colors()[0] == 'W':
+            new_pairing = (player_1.get_name(), player_2.get_name())
+            self.add_pairing(new_pairing)
+
+        else:
+            new_pairing = (player_2.get_name(), player_1.get_name())
+            self.add_pairing(new_pairing)
