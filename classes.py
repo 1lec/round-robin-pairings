@@ -71,12 +71,27 @@ class Player:
 
         else:
             same_color = True
+            count = 0
 
-            for i, color in enumerate(self._previous_colors):
-                if color != player_object.get_previous_colors()[i]:
-                    same_color = False
+            while same_color and (count < len(self._previous_colors)):
+                for i, color in enumerate(self._previous_colors):
 
-            if
+                    if color != player_object.get_previous_colors()[i]:  # if a color mismatch is found
+
+                        if self._previous_colors[i] == 'W':
+                            self.add_black()
+                            player_object.add_white()
+
+                        else:
+                            self.add_white()
+                            player_object.add_black()
+
+                        same_color = False
+
+            if same_color:
+                self.add_white()
+                player_object.add_black()
+
 
 class Round:
     """Represents a round in a chess tournament with two private data members: round_number and pairings."""
