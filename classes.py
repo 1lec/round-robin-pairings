@@ -92,6 +92,10 @@ class Player:
                 self.add_white()
                 player_object.add_black()
 
+    def is_valid_opponent(self, player_object):
+        """Takes a Player object as an argument and returns True if that Player object can be paired with the Player
+        object the method is called on."""
+
 
 class Round:
     """Represents a round in a chess tournament with two private data members: round_number and pairings."""

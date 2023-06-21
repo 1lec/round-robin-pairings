@@ -47,6 +47,8 @@ for round_num in round_dict: # loop through each round in the dictionary of roun
         while player_1.get_rounds_paired() < round_num:
             for player_2 in player_object_list:
                 if (player_2.get_rounds_paired() < round_num) and (player_1 != player_2) and (player_2 not in player_1.get_previous_opponents()):
+                    player_1.determine_colors(player_2)
+
 
 
 
