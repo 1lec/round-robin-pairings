@@ -1,3 +1,6 @@
+from main import round_num
+
+
 class Player:
     """Represents a player in a chess tournament with 5 private data members: name, previous_opponents,
     previous_colors, white_count and rounds_paired."""
@@ -92,9 +95,13 @@ class Player:
                 self.add_white()
                 player_object.add_black()
 
-    def is_valid_opponent(self, player_object):
+    def is_valid_opponent(self, player_2):
         """Takes a Player object as an argument and returns True if that Player object can be paired with the Player
         object the method is called on."""
+
+        unpaired = player_2.get_rounds_paired() < round_num
+
+        return (self != player_2) and unpaired and (player_2 not in self.get_previous_opponents())
 
 
 class Round:
