@@ -48,7 +48,7 @@ for round_num in round_dict:  # loop through each round in the dictionary of rou
             paired = False
             while player_1.get_rounds_paired() < round_num:
                 for player_2 in player_object_list:
-                    if player_1.is_valid_opponent(player_2):
+                    if player_1.is_valid_opponent(player_2, round_num):
                         player_1.determine_colors(player_2)
                         round_dict[round_num].generate_pairing(player_1, player_2)
                         paired = True

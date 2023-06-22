@@ -1,4 +1,4 @@
-from main import round_num, player_object_list
+from main import player_object_list
 
 
 class Player:
@@ -98,11 +98,11 @@ class Player:
                 self.add_white()
                 player_object.add_black()
 
-    def is_valid_opponent(self, player_2):
-        """Takes a Player object as an argument and returns True if that Player object can be paired with the Player
-        object the method is called on."""
+    def is_valid_opponent(self, player_2, current_round):
+        """Takes as arguments a Player object and the current round number and returns True if that Player object can be
+        paired with the Player object the method is called on."""
 
-        unpaired = player_2.get_rounds_paired() < round_num
+        unpaired = player_2.get_rounds_paired() < current_round
 
         return (self != player_2) and unpaired and (player_2 not in self.get_previous_opponents())
 
@@ -168,4 +168,3 @@ class Round:
         for player in player_object_list:
             if player.get_rounds_paired() == self._round_number:
                 player.reset_player()
-
