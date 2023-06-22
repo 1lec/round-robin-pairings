@@ -78,3 +78,7 @@ for round_num in round_dict:  # loop through each round in the dictionary of rou
 
 # Step 9: Once a valid set of pairings is obtained for every Round object, write the round number and corresponding
 # pairings into a new file.
+
+# print test
+# for round_num in round_dict:
+    # print(round_dict[round_num].get_pairings())
