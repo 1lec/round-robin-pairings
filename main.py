@@ -1,5 +1,6 @@
 from classes import Player
 from classes import Round
+import random
 
 # Step 1: Read names of players from a file. Pass these names to Step 2 in the form of a list. An example list is:
 # [Carlsen, Caruana, Nakamura, So]
@@ -52,8 +53,8 @@ for round_num in round_dict:  # loop through each round in the dictionary of rou
                         round_dict[round_num].generate_pairing(player_1, player_2)
                         paired = True
             if not paired:
-
-
+                round_dict[round_num].reset_round()
+                random.shuffle(player_object_list)
 
 # Step 6: Once an unpaired opponent is found for the player, determine the colors by comparing the number of whites
 # played by both players. If they have played the same number of whites, compare their most recent colors played, loop
