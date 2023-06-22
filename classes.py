@@ -34,13 +34,18 @@ class Player:
 
         return self._rounds_paired
 
+    def increase_rounds_paired(self):
+        """Increases the rounds_paired for a Player object by 1."""
+
+        self._rounds_paired += 1
+
     def add_opponent(self, player_object):
         """Takes a player object as an argument and adds it to a different player's list of previous opponents. Also
         increases the number of rounds paired for both player and opponent by 1."""
 
         self._previous_opponents.append(player_object)
         self._rounds_paired += 1
-        player_object.get_rounds_paired += 1
+        player_object.increase_rounds_paired()
 
     def add_black(self):
         """Adds a black to the front of the previous_colors data member."""
