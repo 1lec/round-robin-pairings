@@ -7,7 +7,7 @@ class Player:
 
     def __init__(self, name):
         self._name = name
-        self._previous_opponents = set()  # Using a set to eliminate potential for duplicates.
+        self._previous_opponents = []  # Most recent opponent is at the end of the list.
         self._previous_colors = []  # Most recent color is at the front of the list.
         self._white_count = 0
         self._rounds_paired = 0
@@ -38,9 +38,12 @@ class Player:
         return self._rounds_paired
 
     def add_opponent(self, player_object):
-        """Takes a player object as an argument and adds it to a different player's list of previous opponents."""
+        """Takes a player object as an argument and adds it to a different player's list of previous opponents. Also
+        increases the number of rounds paired for both player and opponent by 1."""
 
-        self._previous_opponents.add(player_object)
+        self._previous_opponents.append(player_object)
+        self._rounds_paired += 1
+        player_object.get_rounds_paired += 1
 
     def add_black(self):
         """Adds a black to the front of the previous_colors data member."""
@@ -103,6 +106,14 @@ class Player:
 
         return (self != player_2) and unpaired and (player_2 not in self.get_previous_opponents())
 
+    def reset_player(self):
+        """Method to be utilizes during a round-reset. Decreases rounds_paired by 1, removes the last opponent, and
+        removes the last color played."""
+
+        self._rounds_paired -= 1
+        self._previous_opponents.pop(-1)
+        self._previous_colors.pop(0)
+
 
 class Round:
     """Represents a round in a chess tournament with two private data members: round_number and pairings."""
@@ -128,17 +139,33 @@ class Round:
         self._pairings.add(pairing)
 
     def generate_pairing(self, player_1, player_2):
-        """Takes two Player objects as arguments and adds their pairing to the set of pairings for the round."""
+        """Takes two Player objects as arguments and adds their pairing to the set of pairings for the round. Also
+        updates each player's list of previous opponents."""
 
         if player_1.get_previous_colors()[0] == 'W':
             new_pairing = (player_1.get_name(), player_2.get_name())
             self.add_pairing(new_pairing)
+            player_1.add_opponent(player_2)
+            player_2.add_opponent(player_1)
 
         else:
             new_pairing = (player_2.get_name(), player_1.get_name())
             self.add_pairing(new_pairing)
+            player_1.add_opponent(player_2)
+            player_2.add_opponent(player_1)
 
     def is_incomplete(self):
         """Returns True if the set of pairings for a Round object is incomplete."""
 
         return len(self.get_pairings()) < (len(player_object_list) // 2)
+
+    def reset_round(self):
+        """Deletes any pairings created for a round and makes corresponding changes to Player objects by calling the
+        reset_player method from the Player class."""
+
+        self._pairings.clear()
+
+        for player in player_object_list:
+            if player.get_rounds_paired() == self._round_number:
+                player.reset_player()
+
