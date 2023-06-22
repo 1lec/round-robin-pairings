@@ -1,6 +1,3 @@
-from main import player_object_list
-
-
 class Player:
     """Represents a player in a chess tournament with 5 private data members: name, previous_opponents,
     previous_colors, white_count and rounds_paired."""
@@ -154,17 +151,19 @@ class Round:
             player_1.add_opponent(player_2)
             player_2.add_opponent(player_1)
 
-    def is_incomplete(self):
-        """Returns True if the set of pairings for a Round object is incomplete."""
+    def is_incomplete(self, player_list):
+        """Takes the list of players competing in the tournament as an argument and returns True if the set of pairings
+        for a Round object is incomplete. A set of pairings for a round is incomplete if the length of the set is less
+        than half the number of players competing in the tournament."""
 
-        return len(self.get_pairings()) < (len(player_object_list) // 2)
+        return len(self.get_pairings()) < (len(player_list) // 2)
 
-    def reset_round(self):
-        """Deletes any pairings created for a round and makes corresponding changes to Player objects by calling the
-        reset_player method from the Player class."""
+    def reset_round(self, player_list):
+        """Takes a list of player objects as an argument. Deletes any pairings created for a round and makes necessary
+        changes to all Player objects in the list by calling the reset_player method from the Player class."""
 
         self._pairings.clear()
 
-        for player in player_object_list:
+        for player in player_list:
             if player.get_rounds_paired() == self._round_number:
                 player.reset_player()
