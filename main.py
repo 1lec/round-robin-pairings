@@ -52,6 +52,7 @@ for round_num in round_dict:  # loop through each round in the dictionary of rou
                         player_1.determine_colors(player_2)
                         round_dict[round_num].generate_pairing(player_1, player_2)
                         paired = True
+                        break
             if not paired:
                 round_dict[round_num].reset_round(player_object_list)
                 random.shuffle(player_object_list)
