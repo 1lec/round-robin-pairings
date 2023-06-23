@@ -72,10 +72,14 @@ class Player:
             player_object.add_black()
 
         else:
-            same_color = True
-            count = 0
+            color_list_1 = self._previous_colors
+            color_list_2 = player_object.get_previous_colors()
 
-            while same_color and (count < len(self._previous_colors)):
+            if color_list_1 == color_list_2:
+                self.add_white()
+                player_object.add_black()
+
+            else:
                 for i, color in enumerate(self._previous_colors):
 
                     if color != player_object.get_previous_colors()[i]:  # if a color mismatch is found
@@ -83,16 +87,12 @@ class Player:
                         if self._previous_colors[i] == 'W':
                             self.add_black()
                             player_object.add_white()
+                            break
 
                         else:
                             self.add_white()
                             player_object.add_black()
-
-                        same_color = False
-
-            if same_color:
-                self.add_white()
-                player_object.add_black()
+                            break
 
     def is_valid_opponent(self, player_2, current_round):
         """Takes as arguments a Player object and the current round number and returns True if that Player object can be
