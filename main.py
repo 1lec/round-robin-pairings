@@ -5,7 +5,7 @@ import random
 # Step 1: Read names of players from a file. Pass these names to Step 2 in the form of a list. An example list is:
 # [Carlsen, Caruana, Nakamura, So]
 
-players_list = ['Carlsen', 'Caruana', 'Nakamura', 'So', 'Sevian', 'Shankland', 'Anand', 'Shirov']
+players_list = ['Carlsen', 'Caruana', 'Nakamura', 'So', 'Sevian', 'Shankland']
 
 # Step 2: Use list comprehension to generate a list of player objects from the list of player names.
 
@@ -31,13 +31,15 @@ for round_num in round_dict:  # loop through each round in the dictionary of rou
     while round_dict[round_num].is_incomplete(player_object_list):
         for player_1 in player_object_list:  # for each round, find an unpaired player in the list of Player objects
             paired = player_1.get_rounds_paired() == round_num
-            while player_1.get_rounds_paired() < round_num:
+            checked = 0
+            while (player_1.get_rounds_paired() < round_num) and (checked < len(player_object_list)):
                 for player_2 in player_object_list:
                     if player_1.is_valid_opponent(player_2, round_num):
                         player_1.determine_colors(player_2)
                         round_dict[round_num].generate_pairing(player_1, player_2)
                         paired = True
                         break
+                    checked += 1
             if not paired:
                 round_dict[round_num].reset_round(player_object_list)
                 random.shuffle(player_object_list)
