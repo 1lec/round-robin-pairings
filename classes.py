@@ -166,3 +166,15 @@ class Round:
         for player in player_list:
             if player.get_rounds_paired() == self._round_number:
                 player.reset_player()
+
+
+class Tournament:
+    "Represents a chess tournament with rounds and players."
+
+    def __init__(self, title, date, location):
+        self._title = title
+        self._date = date
+        self._location = location
+
+
+
