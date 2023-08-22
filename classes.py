@@ -237,6 +237,16 @@ class Tournament:
                         self._round_dict[round_num].reset_round(player_object_list)
                         random.shuffle(player_object_list)
 
+        self.write_pairings_to_file()
+
+    def write_pairings_to_file(self):
+        """Writes the pairings currently stored in self._round_dict to a file."""
+
+        with open(filedialog.asksaveasfilename(), 'w') as outfile:
+            for round_num in self._round_dict:
+                outfile.write('Round: ' + str(round_num) + '\n')
+                for pairing in self._round_dict[round_num].get_pairings():
+                    outfile.write(pairing[0] + ' - ' + pairing[1])
 
 # Step 6: Once an unpaired opponent is found for the player, determine the colors by comparing the number of whites
 # played by both players. If they have played the same number of whites, compare their most recent colors played, loop
