@@ -202,7 +202,7 @@ class Tournament:
         players_list = []
 
         for player_name in pre_players_list:
-            players_list.append(player_name.rstrip('\n'))
+            players_list.append(player_name.rstrip())
 
         # Step 3: Use list comprehension to generate a list of player objects from the list of player names.
 
