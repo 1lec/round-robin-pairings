@@ -181,6 +181,11 @@ class Tournament:
         self._location = location
         self._round_dict = {}
 
+    def get_round_dict(self):
+        """Returns the dictionary of Round objects for a Tournament."""
+
+        return self._round_dict
+
     def pair_single_round_robin(self):
         """Takes as an argument a list of players and generates single round-robin pairings for the event."""
 
@@ -192,10 +197,12 @@ class Tournament:
         # ['Carlsen', 'Caruana', 'Nakamura', 'So']
 
         with open(filedialog.askopenfilename(), 'r') as infile:
-            players_list = infile.readlines()
+            pre_players_list = infile.readlines()
 
-        for line in players_list:
-            line.rstrip()
+        players_list = []
+
+        for player_name in pre_players_list:
+            players_list.append(player_name.rstrip('\n'))
 
         # Step 3: Use list comprehension to generate a list of player objects from the list of player names.
 
