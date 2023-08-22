@@ -169,6 +169,8 @@ class Round:
 
         for player in player_list:
             if player.get_rounds_paired() == self._round_number:
+                if player.get_previous_colors()[0] == 'W':
+                    player.subtract_white()
                 player.reset_player()
 
 
