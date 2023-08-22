@@ -244,9 +244,10 @@ class Tournament:
 
         with open(filedialog.asksaveasfilename(), 'w') as outfile:
             for round_num in self._round_dict:
-                outfile.write('Round: ' + str(round_num) + '\n')
+                outfile.write('Round ' + str(round_num) + '\n')
                 for pairing in self._round_dict[round_num].get_pairings():
-                    outfile.write(pairing[0] + ' - ' + pairing[1])
+                    outfile.write(pairing[0] + ' - ' + pairing[1] + '\n')
+                outfile.write('\n')
 
 # Step 6: Once an unpaired opponent is found for the player, determine the colors by comparing the number of whites
 # played by both players. If they have played the same number of whites, compare their most recent colors played, loop
