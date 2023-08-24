@@ -228,16 +228,16 @@ class Tournament:
             while self._round_dict[round_num].is_incomplete(player_object_list):
                 for player_1 in player_object_list:  # for each round, find an unpaired player in player_object_list
                     paired = player_1.get_rounds_paired() == round_num
-                    while player_1.get_rounds_paired() < round_num:
+                    if not paired:
                         for player_2 in player_object_list:
                             if player_1.is_valid_opponent(player_2, round_num):
                                 player_1.determine_colors(player_2)
                                 self._round_dict[round_num].generate_pairing(player_1, player_2)
                                 paired = True
                                 break
-                    if not paired:
-                        self._round_dict[round_num].reset_round(player_object_list)
-                        random.shuffle(player_object_list)
+                        if not paired:
+                            self._round_dict[round_num].reset_round(player_object_list)
+                            random.shuffle(player_object_list)
 
         self.write_pairings_to_file()
 
