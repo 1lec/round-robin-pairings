@@ -220,6 +220,8 @@ class Tournament:
             self._round_dict[count] = Round(count)
             count += 1
 
+        # Step 5: Iterate through each Round in self._round_dict to populate each Round with a complete set of pairings.
+
         for round_num in self._round_dict:  # loop through each round in the dictionary of rounds
             while self._round_dict[round_num].is_incomplete(player_object_list):
                 for player_1 in player_object_list:  # for each round, find an unpaired player in player_object_list
@@ -232,6 +234,8 @@ class Tournament:
                         if player_1.get_rounds_paired() < round_num:
                             self._round_dict[round_num].reset_round(player_object_list)
                             random.shuffle(player_object_list)
+
+        # Step 6: Write all pairings to a file.
 
         self.write_pairings_to_file()
 
