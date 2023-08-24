@@ -107,7 +107,7 @@ class Player:
         return (self != player_2) and unpaired and (player_2 not in self.get_previous_opponents())
 
     def reset_player(self):
-        """Method to be utilizes during a round-reset. Decreases rounds_paired by 1, removes the last opponent, and
+        """Method to be utilized during a round-reset. Decreases rounds_paired by 1, removes the last opponent, and
         removes the last color played."""
 
         self._rounds_paired -= 1
