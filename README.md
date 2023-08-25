@@ -1,8 +1,7 @@
 # Round Robin Pairings
 
-This program generates round-robin pairings for a chess tournament with 2^n number of players. The program can also
-pair events with even, non-2^n numbers of players, but not with 100% success.
+This program generates pairings for a single round-robin chess tournament with an even number of players.
 
-The program will prompt the user for a text file containing the names of the players in the tournament. Please see
-one of the example text files to understand the correct formatting of this text file. Once the pairings are
-generated, the program prompt the user for a location to save them.
+The program will ask you for a text file containing the names of all players in the tournament. Please make sure your
+file follows the same format as example.txt. Once pairings for your event are generated, you will be prompted to save
+them to a file on your device.
