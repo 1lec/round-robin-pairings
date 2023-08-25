@@ -200,11 +200,13 @@ class Tournament:
     def total_reset(self, player_object_list):
         """Clears all pairings from each Round, and resets all data members for each Player."""
 
-        self._round_dict.clear()
         self._rounds_paired = 0
 
         for player in player_object_list:
             player.total_player_reset()
+
+        for num_round in self._round_dict:
+            self._round_dict[num_round].get_pairings().clear()
 
     def pair_single_round_robin(self):
         """Takes as an argument a list of players and generates single round-robin pairings for the event."""
