@@ -1,0 +1,45 @@
+Candidates Tournament - London, England
+December 18th, 2023
+
+Round 1
+Fischer, Bobby - Polgar, Judit
+Capablanca, Jose - Anand, Viswanathan
+Carlsen, Magnus - Caruana, Fabiano
+Morphy, Paul - Kasparov, Garry
+
+Round 2
+Caruana, Fabiano - Anand, Viswanathan
+Carlsen, Magnus - Capablanca, Jose
+Kasparov, Garry - Polgar, Judit
+Morphy, Paul - Fischer, Bobby
+
+Round 3
+Fischer, Bobby - Kasparov, Garry
+Polgar, Judit - Morphy, Paul
+Capablanca, Jose - Caruana, Fabiano
+Anand, Viswanathan - Carlsen, Magnus
+
+Round 4
+Carlsen, Magnus - Morphy, Paul
+Anand, Viswanathan - Polgar, Judit
+Capablanca, Jose - Fischer, Bobby
+Caruana, Fabiano - Kasparov, Garry
+
+Round 5
+Kasparov, Garry - Carlsen, Magnus
+Morphy, Paul - Caruana, Fabiano
+Polgar, Judit - Capablanca, Jose
+Fischer, Bobby - Anand, Viswanathan
+
+Round 6
+Capablanca, Jose - Morphy, Paul
+Caruana, Fabiano - Polgar, Judit
+Carlsen, Magnus - Fischer, Bobby
+Anand, Viswanathan - Kasparov, Garry
+
+Round 7
+Morphy, Paul - Anand, Viswanathan
+Kasparov, Garry - Capablanca, Jose
+Fischer, Bobby - Caruana, Fabiano
+Polgar, Judit - Carlsen, Magnus
+
