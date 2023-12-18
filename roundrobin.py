@@ -244,7 +244,7 @@ class Tournament:
         # during the process of pairing a round, an opponent cannot be found for a player, the list of players is
         # shuffled and another attempt at pairing the round is made. If shuffling the list does not fix the issue, it's
         # possible (and maybe likely) that no legal set of pairings for the Round exists. In this case, all sets of
-        # pairings of clear, and the process begins again from Round 1.
+        # pairings are cleared, and the process begins again from Round 1.
 
         while self._rounds_paired < len(player_object_list) - 1:
             for round_num in self._round_dict:
