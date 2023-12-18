@@ -287,8 +287,27 @@ class Tournament:
         """Writes the pairings currently stored in self._round_dict to a file."""
 
         with open(filedialog.asksaveasfilename(), 'w') as outfile:
+            outfile.write(self._title + ' - ' + self._location + '\n' + self._date + '\n\n')
             for round_num in self._round_dict:
                 outfile.write('Round ' + str(round_num) + '\n')
                 for pairing in self._round_dict[round_num].get_pairings():
                     outfile.write(pairing[0] + ' - ' + pairing[1] + '\n')
                 outfile.write('\n')
+
+
+def main():
+    """Prompts the user for the title, date, and location of a chess tournament, then prompts the user for a file
+     containing the list of players in the chess tournament. From this information, the program writes to a file a set
+     of single-round-robin pairings for the tournament."""
+    print("Welcome to my Round-Robin Pairings Program. This program will generate round-robin pairings for a chess"
+          "tournament with an even number of players. Make sure to view the README for proper formatting.")
+    title = input("Enter the title of the tournament: ")
+    date = input("Enter the date of the tournament: ")
+    location = input("Enter the location of the tournament: ")
+    tournament = Tournament(title, date, location)
+    tournament.pair_single_round_robin()
+    print("Paired! Check your saved file to see your pairings.")
+
+
+if __name__ == "__main__":
+    main()
