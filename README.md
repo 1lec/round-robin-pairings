@@ -23,4 +23,5 @@ computer.
 ## Limitations:
 
 * Only events with an even number of players can be paired.
-* The program is not recommended for events with a very large number of players. 
+* With regard to speed, this program is not recommended for events with over 16 players. Fortunately, few round-robin
+events should exceed this number of players.
