@@ -191,21 +191,21 @@ class Tournament:
         self._location = location
         self._round_dict = {}
         self._rounds_paired = 0
+        self._players = None
 
-    def total_reset(self, player_object_list):
+    def total_reset(self):
         """Clears all pairings from each Round, and resets all data members for each Player."""
 
         self._rounds_paired = 0
 
-        for player in player_object_list:
+        for player in self._players:
             player.total_player_reset()
 
         for num_round in self._round_dict:
             self._round_dict[num_round].get_pairings().clear()
 
-    def pair_single_round_robin(self):
-        """Takes as an argument a list of players and generates single round-robin pairings for the event."""
-
+    def read_player_names(self):
+        """Prompts the user for a file, and reads the player names from the file."""
         # Step 2: Read from a file a list of names of players. An example list is:
         # ['Carlsen', 'Caruana', 'Nakamura', 'So']
 
@@ -221,15 +221,21 @@ class Tournament:
 
         player_object_list = [Player(player) for player in players_list]
 
-        # Step 4: From the length of the list of Player objects, create a dictionary of rounds, with the round number as
-        # the key and a Round object as the value. An example dictionary is:
-        # {1: Round(1), 2: Round(2), 3: Round(3)}
+        self._players = player_object_list
 
+    def initialize_rounds(self):
+        """From the length of the list of Player objects, create a dictionary of rounds, with the round number as
+        the key and a Round object as the value. An example dictionary is: {1: Round(1), 2: Round(2), 3: Round(3)}"""
         count = 1
 
-        while count < len(player_object_list):
+        while count < len(self._players):
             self._round_dict[count] = Round(count)
             count += 1
+
+    def pair_single_round_robin(self):
+        """Takes as an argument a list of players and generates single round-robin pairings for the event."""
+        self.read_player_names()
+        self.initialize_rounds()
 
         # Step 5: Generate a complete set of pairings for each Round object, starting with Round 1. If at some point
         # during the process of pairing a round, an opponent cannot be found for a player, the list of players is
@@ -237,16 +243,16 @@ class Tournament:
         # possible (and maybe likely) that no legal set of pairings for the Round exists. In this case, all sets of
         # pairings are cleared, and the process begins again from Round 1.
 
-        while self._rounds_paired < len(player_object_list) - 1:
+        while self._rounds_paired < len(self._players) - 1:
             for round_num in self._round_dict:
-                shuffles = 0  # Represents the number of times player_object_list has been shuffled
+                shuffles = 0  # Represents the number of times self._players has been shuffled
 
-                # While player_object_list has not been shuffled more than once and the current Round does not have a
+                # While self._players has not been shuffled more than once and the current Round does not have a
                 # complete set of pairings, attempt to generate a complete set of pairings.
-                while shuffles < 2 and self._round_dict[round_num].is_incomplete(player_object_list):
-                    for player_1 in player_object_list:
+                while shuffles < 2 and self._round_dict[round_num].is_incomplete(self._players):
+                    for player_1 in self._players:
                         if player_1.get_rounds_paired() < round_num:
-                            for player_2 in player_object_list:
+                            for player_2 in self._players:
                                 if player_1.is_valid_opponent(player_2, round_num):
                                     player_1.determine_colors(player_2)
                                     self._round_dict[round_num].generate_pairing(player_1, player_2)
@@ -255,19 +261,19 @@ class Tournament:
                             # If an opponent was not found for player_1, delete the pairings for the current round,
                             # shuffle the list of Player objects, and try again to find a set of valid pairings.
                             if player_1.get_rounds_paired() < round_num:
-                                self._round_dict[round_num].reset_round(player_object_list)
-                                random.shuffle(player_object_list)
+                                self._round_dict[round_num].reset_round(self._players)
+                                random.shuffle(self._players)
                                 shuffles += 1
                                 break
 
                 # If the Round object has a complete set of pairings, attempt to pair the next round.
-                if not self._round_dict[round_num].is_incomplete(player_object_list):
+                if not self._round_dict[round_num].is_incomplete(self._players):
                     self._rounds_paired += 1
 
                 # If a complete set of pairings could not be generated after one shuffle, delete all pairings and
                 # restart from round 1.
                 else:
-                    self.total_reset(player_object_list)
+                    self.total_reset(self._players)
                     break
 
         # Step 6: Write all pairings to a file.
