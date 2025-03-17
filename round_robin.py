@@ -192,11 +192,6 @@ class Tournament:
         self._round_dict = {}
         self._rounds_paired = 0
 
-    def get_round_dict(self):
-        """Returns the dictionary of Round objects for a Tournament."""
-
-        return self._round_dict
-
     def total_reset(self, player_object_list):
         """Clears all pairings from each Round, and resets all data members for each Player."""
 
@@ -210,10 +205,6 @@ class Tournament:
 
     def pair_single_round_robin(self):
         """Takes as an argument a list of players and generates single round-robin pairings for the event."""
-
-        # Step 1: Clear the current dictionary of pairings.
-
-        self._round_dict.clear()
 
         # Step 2: Read from a file a list of names of players. An example list is:
         # ['Carlsen', 'Caruana', 'Nakamura', 'So']
