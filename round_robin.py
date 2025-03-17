@@ -191,7 +191,7 @@ class Tournament:
         self._location = location
         self._round_dict = {}
         self._rounds_paired = 0
-        self._players = None
+        self._players = []
 
     def total_reset(self):
         """Clears all pairings from each Round, and resets all data members for each Player."""
@@ -206,22 +206,9 @@ class Tournament:
 
     def read_player_names(self):
         """Prompts the user for a file, and reads the player names from the file."""
-        # Step 2: Read from a file a list of names of players. An example list is:
-        # ['Carlsen', 'Caruana', 'Nakamura', 'So']
-
         with open(filedialog.askopenfilename(), 'r') as infile:
-            pre_players_list = infile.readlines()
-
-        players_list = []
-
-        for player_name in pre_players_list:
-            players_list.append(player_name.rstrip())
-
-        # Step 3: Use list comprehension to generate a list of player objects from the list of player names.
-
-        player_object_list = [Player(player) for player in players_list]
-
-        self._players = player_object_list
+            for name in infile:
+                self._players.append(Player(name.rstrip()))
 
     def initialize_rounds(self):
         """From the length of the list of Player objects, create a dictionary of rounds, with the round number as
@@ -273,16 +260,13 @@ class Tournament:
                 # If a complete set of pairings could not be generated after one shuffle, delete all pairings and
                 # restart from round 1.
                 else:
-                    self.total_reset(self._players)
+                    self.total_reset()
                     break
-
-        # Step 6: Write all pairings to a file.
 
         self.write_pairings_to_file()
 
     def write_pairings_to_file(self):
         """Writes the pairings currently stored in self._round_dict to a file."""
-
         with open(filedialog.asksaveasfilename(), 'w') as outfile:
             outfile.write(self._title + ' - ' + self._location + '\n' + self._date + '\n\n')
             for round_num in self._round_dict:
