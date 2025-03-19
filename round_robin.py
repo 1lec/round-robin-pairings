@@ -77,10 +77,10 @@ class BergerTable:
         """Use the current alignment of players within the positions to pair the given round."""
         for num in range(len(self._positions)):
             current_position = self._positions[num]
-            if current_position.get_color == 'white':
-                white_player = current_position.get_player()
-                black_player = self._positions[current_position.get_opponent()].get_player()
-                self._rounds[round_number].add_pairing(white_player, black_player)
+            if current_position.get_color() == 'white':
+                white = current_position.get_player()
+                black = self._positions[current_position.get_opponent()].get_player()
+                self._rounds[round_number].add_pairing(white, black)
 
     def _rotate_players(self):
         """Except for the player in the fixed position, rotate the position of the players to obtain new pairings."""
@@ -115,9 +115,9 @@ class Round:
         """Returns the round number."""
         return self._number
 
-    def add_pairing(self, pairing):
+    def add_pairing(self, white_player, black_player):
         """Adds a pairing to the list of the pairings."""
-        self._pairings.append(pairing)
+        self._pairings.append(Pairing(white_player, black_player))
 
     def get_pairings(self):
         """Returns the pairings for the round."""
