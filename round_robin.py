@@ -189,23 +189,20 @@ class Tournament:
 
     def _write_schedule(self):
         """Prompts the user for a file, then writes the schedule to said file."""
-        with open(filedialog.askopenfilename(), 'w') as outfile:
-            pass
-
-    def _print_schedule(self):
-        """Test method that prints the schedule to the terminal."""
-        rounds = self._schedule.get_rounds()
-        for num in range(1, len(self._players)):
-            print(f"Round {num}")
-            pairings = rounds[num].get_pairings()
-            for pairing in pairings:
-                print(f"{pairing.get_white_player().get_name()} - {pairing.get_black_player().get_name()}")
+        with open(filedialog.asksaveasfilename(), 'w') as outfile:
+            rounds = self._schedule.get_rounds()
+            for num in range(1, len(self._players)):
+                outfile.write(f"Round {num}\n")
+                pairings = rounds[num].get_pairings()
+                for pairing in pairings:
+                    outfile.write(f"{pairing.get_white_player().get_name()} - {pairing.get_black_player().get_name()}\n")
+                outfile.write("\n")
 
     def run(self):
         """Prompts user for players and tournament details, and writes out pairings to a file."""
         self._read_player_names()
         self._generate_schedule()
-        self._print_schedule()
+        self._write_schedule()
 
 
 def main():
