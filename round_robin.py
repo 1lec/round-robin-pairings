@@ -190,10 +190,13 @@ class Tournament:
         self._location = input("Enter the location of the tournament: ")
 
     def _read_player_names(self):
-        """Prompts the user for a file, and reads the player names from the file."""
+        """Prompts the user for a file, and reads the player names from the file. Adds a BYE placeholder if there
+        are an odd number of players."""
         with open(filedialog.askopenfilename(), 'r') as infile:
             for num, name in enumerate(infile):
                 self._players.append(Player(name.rstrip(), num))
+        if len(self._players) % 2 != 0:
+            self._players.append(Player("BYE", len(self._players)))
 
     def _generate_schedule(self):
         """Takes the list of players from the file and generates a round robin schedule."""
