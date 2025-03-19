@@ -21,6 +21,10 @@ class Position:
     def get_player(self):
         """Return the player of this position."""
         return self._player
+    
+    def set_player(self, player):
+        """Receives a player object and assigns it to self._player."""
+        self._player = player
 
 
 class Pairing:
@@ -89,6 +93,8 @@ class BergerTable:
                 player.change_position(self._rotation_factor)
             if player.get_position() < 0:
                 player.change_position(self._fixed_position)
+            new_position = player.get_position()
+            self._positions[new_position].set_player(player)
 
     def get_rounds(self):
         """Returns all rounds for the Berger Table."""
