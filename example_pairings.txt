@@ -1,45 +1,45 @@
-Candidates Tournament - London, England
-December 18th, 2023
+Candidates Tournament - Toronto, Canada
+March 19th, 2025
 
 Round 1
-Fischer, Bobby - Polgar, Judit
-Capablanca, Jose - Anand, Viswanathan
-Carlsen, Magnus - Caruana, Fabiano
-Morphy, Paul - Kasparov, Garry
+Carlsen, Magnus - Polgar, Judit
+Caruana, Fabiano - Fischer, Bobby
+Capablanca, Jose - Kasparov, Garry
+Anand, Viswanathan - Morphy, Paul
 
 Round 2
-Caruana, Fabiano - Anand, Viswanathan
-Carlsen, Magnus - Capablanca, Jose
-Kasparov, Garry - Polgar, Judit
-Morphy, Paul - Fischer, Bobby
+Polgar, Judit - Morphy, Paul
+Kasparov, Garry - Anand, Viswanathan
+Fischer, Bobby - Capablanca, Jose
+Carlsen, Magnus - Caruana, Fabiano
 
 Round 3
-Fischer, Bobby - Kasparov, Garry
-Polgar, Judit - Morphy, Paul
-Capablanca, Jose - Caruana, Fabiano
-Anand, Viswanathan - Carlsen, Magnus
+Caruana, Fabiano - Polgar, Judit
+Capablanca, Jose - Carlsen, Magnus
+Anand, Viswanathan - Fischer, Bobby
+Morphy, Paul - Kasparov, Garry
 
 Round 4
-Carlsen, Magnus - Morphy, Paul
-Anand, Viswanathan - Polgar, Judit
-Capablanca, Jose - Fischer, Bobby
-Caruana, Fabiano - Kasparov, Garry
+Polgar, Judit - Kasparov, Garry
+Fischer, Bobby - Morphy, Paul
+Carlsen, Magnus - Anand, Viswanathan
+Caruana, Fabiano - Capablanca, Jose
 
 Round 5
-Kasparov, Garry - Carlsen, Magnus
-Morphy, Paul - Caruana, Fabiano
-Polgar, Judit - Capablanca, Jose
-Fischer, Bobby - Anand, Viswanathan
+Capablanca, Jose - Polgar, Judit
+Anand, Viswanathan - Caruana, Fabiano
+Morphy, Paul - Carlsen, Magnus
+Kasparov, Garry - Fischer, Bobby
 
 Round 6
-Capablanca, Jose - Morphy, Paul
-Caruana, Fabiano - Polgar, Judit
-Carlsen, Magnus - Fischer, Bobby
-Anand, Viswanathan - Kasparov, Garry
+Polgar, Judit - Fischer, Bobby
+Carlsen, Magnus - Kasparov, Garry
+Caruana, Fabiano - Morphy, Paul
+Capablanca, Jose - Anand, Viswanathan
 
 Round 7
-Morphy, Paul - Anand, Viswanathan
-Kasparov, Garry - Capablanca, Jose
-Fischer, Bobby - Caruana, Fabiano
-Polgar, Judit - Carlsen, Magnus
+Anand, Viswanathan - Polgar, Judit
+Morphy, Paul - Capablanca, Jose
+Kasparov, Garry - Caruana, Fabiano
+Fischer, Bobby - Carlsen, Magnus
 

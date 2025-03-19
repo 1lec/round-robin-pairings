@@ -1,6 +1,10 @@
 from tkinter import filedialog
 
 
+INTRO_MESSAGE = """Welcome to my Round-Robin Pairings Program. This program will generate round-robin pairings for a chess
+tournament with an even number of players. Make sure to view the README for proper formatting."""
+
+
 class Position:
     """Represents a position in a round robin schedule span diagram."""
 
@@ -174,6 +178,16 @@ class Tournament:
     def __init__(self):
         self._players = []
         self._schedule = None
+        self._title = None
+        self._date = None
+        self._location = None
+
+    def _program_intro(self):
+        """Introduces the program and prompts the user for the title, date, and location of the tournament."""
+        print(INTRO_MESSAGE)
+        self._title = input("Enter the title of the tournament: ")
+        self._date = input("Enter the date of the tournament: ")
+        self._location = input("Enter the location of the tournament: ")
 
     def _read_player_names(self):
         """Prompts the user for a file, and reads the player names from the file."""
@@ -190,16 +204,19 @@ class Tournament:
     def _write_schedule(self):
         """Prompts the user for a file, then writes the schedule to said file."""
         with open(filedialog.asksaveasfilename(), 'w') as outfile:
+            outfile.write(f"{self._title} - {self._location}\n{self._date}\n\n")
             rounds = self._schedule.get_rounds()
-            for num in range(1, len(self._players)):
+            for num in range(1, len(rounds) + 1):
                 outfile.write(f"Round {num}\n")
                 pairings = rounds[num].get_pairings()
                 for pairing in pairings:
                     outfile.write(f"{pairing.get_white_player().get_name()} - {pairing.get_black_player().get_name()}\n")
                 outfile.write("\n")
+        print("Paired! Check your saved file to see your pairings.")
 
     def run(self):
         """Prompts user for players and tournament details, and writes out pairings to a file."""
+        self._program_intro()
         self._read_player_names()
         self._generate_schedule()
         self._write_schedule()
