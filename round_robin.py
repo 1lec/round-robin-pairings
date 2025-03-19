@@ -89,6 +89,8 @@ class BergerTable:
                 white = current_position.get_player()
                 black = self._positions[current_position.get_opponent()].get_player()
                 self._rounds[round_number].add_pairing(white, black)
+        if round_number % 2 == 0:
+            self._rounds[round_number].move_last_to_first()
 
     def _rotate_players(self):
         """Except for the player in the fixed position, rotate the position of the players to obtain new pairings."""
@@ -138,6 +140,12 @@ class Round:
     def get_pairings(self):
         """Returns the pairings for the round."""
         return self._pairings
+    
+    def move_last_to_first(self):
+        """Moves the last pairing in the list to the front."""
+        last = self._pairings[-1]
+        self._pairings.pop(-1)
+        self._pairings.insert(0, last)
 
 
 class Player:
