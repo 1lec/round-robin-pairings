@@ -26,6 +26,10 @@ class Position:
         """Receives a player object and assigns it to self._player."""
         self._player = player
 
+    def swap_color(self):
+        """Changes the color of the position from white to black, or vice versa."""
+        self._color = 'white' if self._color == 'black' else 'black'
+
 
 class Pairing:
     """Represents a pairing in a chess tournament."""
@@ -96,6 +100,11 @@ class BergerTable:
             new_position = player.get_position()
             self._positions[new_position].set_player(player)
 
+    def _swap_first_board_colors(self):
+        """Swaps colors for first and last positions to ensure player in fixed position alternates colors."""
+        self._positions[0].swap_color()
+        self._positions[self._fixed_position].swap_color()
+
     def get_rounds(self):
         """Returns all rounds for the Berger Table."""
         return self._rounds
@@ -105,9 +114,10 @@ class BergerTable:
         self._initialize_rounds()
         self._determine_opponents()
         self._initialize_positions()
-        for num in range(1, len(self._rounds) + 1):
-            self._pair_round(num)
+        for num in range(len(self._rounds)):
+            self._pair_round(num + 1)
             self._rotate_players()
+            self._swap_first_board_colors()
 
 
 class Round:
